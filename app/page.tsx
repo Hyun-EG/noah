@@ -1,7 +1,7 @@
 import React from "react";
 
 const page = () => {
-  return <div>박성현</div>;
+  return <div></div>;
 };
 
 export default page;
