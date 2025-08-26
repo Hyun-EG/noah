@@ -5,9 +5,11 @@ import { FiMenu, FiX } from "react-icons/fi";
 import { iconBtn } from "../variants";
 import { navItemsList } from "../navItemsList";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const SubNav = () => {
   const [isShowSubNav, setIsShowSubNav] = useState(false);
+  const path = usePathname();
 
   const toggleSubNav = useCallback(() => {
     setIsShowSubNav((prev) => (prev ? false : true));
@@ -53,7 +55,11 @@ const SubNav = () => {
                   className="mx-4 py-2 border-b border-sky-500 dark:border-[#bebebe]"
                   key={item.link}
                 >
-                  <Link href={item.link} aria-label={`${item.name}로 이동하기`}>
+                  <Link
+                    className={`${path === item.link ? "text-sky-500" : ""}`}
+                    href={item.link}
+                    aria-label={`${item.name}로 이동하기`}
+                  >
                     {item.name}
                   </Link>
                 </li>
