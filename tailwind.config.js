@@ -5,5 +5,13 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        ".transition-slow-color": {
+          transition: "color 0.5s ease-in-out",
+        },
+      });
+    },
+  ],
 };
