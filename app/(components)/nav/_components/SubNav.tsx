@@ -31,7 +31,12 @@ const SubNav = () => {
         <section className="fixed top-12 left-0 z-10 flex flex-col gap-4 w-full min-h-screen py-4 border-t border-sky-500 rounded-t-lg bg-white dark:bg-black dark:border-white animate-fadeIn">
           <nav>
             <ul className="flex flex-col gap-2 text-center">
-              <li className="mx-4 py-2 bg-sky-500 text-white rounded-xl dark:bg-white dark:text-black">
+              <li
+                onClick={() => {
+                  setIsShowSubNav(false);
+                }}
+                className="mx-4 py-2 bg-sky-500 text-white rounded-xl dark:bg-white dark:text-black"
+              >
                 <Link href="/signin" aria-label="로그인으로 이동하기">
                   로그인
                 </Link>
@@ -42,6 +47,9 @@ const SubNav = () => {
             <ul className="flex flex-col gap-2 text-center">
               {navItemsList.map((item) => (
                 <li
+                  onClick={() => {
+                    setIsShowSubNav(false);
+                  }}
                   className="mx-4 py-2 border-b border-sky-500 dark:border-[#bebebe]"
                   key={item.link}
                 >
