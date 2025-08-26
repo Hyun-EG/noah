@@ -28,9 +28,9 @@ export const iconBtn = cva("flex items-center leading-none rounded", {
       true: "hover:bg-black/5 dark:hover:bg-white/10",
       false: "",
     },
-    defaultVariant: {
-      size: "sm",
-      subtle: true,
-    },
+  },
+  defaultVariants: {
+    size: "sm",
+    subtle: true,
   },
 });
