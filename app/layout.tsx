@@ -32,6 +32,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        <link
+          rel="preload"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css"
+          as="style"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-white dark:bg-black`}
       >
