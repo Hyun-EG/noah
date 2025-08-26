@@ -8,7 +8,7 @@ import SubNav from "./_components/SubNav";
 
 const Nav = () => {
   return (
-    <header className="fixed top-0 left-0 w-full h-12 px-3 md:px-4 flex justify-between items-center border-b text-black dark:text-white">
+    <header className="fixed top-0 left-0 z-20 w-full h-12 px-3 md:px-4 flex justify-between items-center text-black dark:text-white">
       <div className="flex items-center gap-2 md:gap-4">
         <div className="flex justify-center items-center">
           <Logo />
@@ -19,7 +19,11 @@ const Nav = () => {
             {navItemsList.map((item) => (
               <li key={item.link}>
                 <Link
-                  className="transition-slow-color hover:text-sky-500"
+                  className={navLink({
+                    size: "md",
+                    tone: "default",
+                    weight: "normal",
+                  })}
                   href={item.link}
                   aria-label={`${item.name}로 이동하기`}
                 >
@@ -31,7 +35,7 @@ const Nav = () => {
         </nav>
       </div>
       <nav>
-        <ul className=" flex items-center gap-3">
+        <ul className="flex items-center gap-3">
           <li>
             <Link
               className={`${navLink({
