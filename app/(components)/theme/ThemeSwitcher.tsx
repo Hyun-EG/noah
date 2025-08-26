@@ -14,9 +14,9 @@ const ThemeSwitcher = () => {
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
       {theme === "dark" ? (
-        <FaMoon fill="yellow" size={24} />
+        <FaMoon className="block" aria-hidden="true" fill="yellow" size={24} />
       ) : (
-        <FaSun fill="orange" size={24} />
+        <FaSun className="block" aria-hidden="true" fill="orange" size={24} />
       )}
     </button>
   );
