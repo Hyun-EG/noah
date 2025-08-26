@@ -1,34 +1,28 @@
-"use client";
-
-import Image from "next/image";
 import React from "react";
-import logo from "@/public/icons/icon-logo-192x192.png";
 import ThemeSwitcher from "../theme/ThemeSwitcher";
 import Link from "next/link";
 import { navItemsList } from "./navItemsList";
+import Logo from "./_components/Logo";
 
 const Nav = () => {
   return (
-    <header className="w-full h-12 px-2 flex justify-between items-center border-b dark:text-white">
+    <header className="w-full h-12 px-2 flex justify-between items-center border-b text-black dark:text-white">
       <div className="w-[70%] h-full flex">
         <div className="w-[5%] h-full flex justify-center items-center">
-          <Link href="/" aria-label="홈으로 이동하기" title="Noah 로고">
-            <Image
-              className="rounded-full cursor-pointer"
-              src={logo}
-              width={36}
-              height={36}
-              alt="Noah 홈페이지 로고"
-              priority
-            />
-          </Link>
+          <Logo />
         </div>
 
         <nav>
           <ul className="w-full h-full ml-6 flex justify-center items-center gap-4">
-            {navItemsList.map((item, idx) => (
-              <li key={idx}>
-                <a href={item.link}>{item.name}</a>
+            {navItemsList.map((item) => (
+              <li key={item.link}>
+                <Link
+                  className="transition-slow-color hover:text-sky-500"
+                  href={item.link}
+                  aria-label={`${item.name}로 이동하기`}
+                >
+                  {item.name}
+                </Link>
               </li>
             ))}
           </ul>
@@ -37,11 +31,17 @@ const Nav = () => {
       <nav className="w-[30%] ">
         <ul className="h-full flex justify-end items-center gap-4">
           <li>
-            <Link aria-label="로그인으로 이동하기" href="/signin">
+            <Link
+              className="transition-slow-color hover:text-sky-500"
+              aria-label="로그인으로 이동하기"
+              href="/signin"
+            >
               로그인
             </Link>
           </li>
-          <ThemeSwitcher />
+          <li className="flex items-center">
+            <ThemeSwitcher />
+          </li>
         </ul>
       </nav>
     </header>
