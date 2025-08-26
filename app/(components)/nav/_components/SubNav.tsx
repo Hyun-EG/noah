@@ -33,16 +33,16 @@ const SubNav = () => {
         <section className="fixed top-12 left-0 z-10 flex flex-col gap-4 w-full min-h-screen py-4 border-t border-sky-500 rounded-t-lg bg-white dark:bg-black dark:border-white animate-fadeIn">
           <nav>
             <ul className="flex flex-col gap-2 text-center">
-              <li
-                onClick={() => {
-                  setIsShowSubNav(false);
-                }}
-                className="mx-4 py-2 bg-sky-500 text-white rounded-xl dark:bg-white dark:text-black"
-              >
-                <Link href="/signin" aria-label="로그인으로 이동하기">
+              <Link href="/signin" aria-label="관리자 로그인으로 이동하기">
+                <li
+                  onClick={() => {
+                    setIsShowSubNav(false);
+                  }}
+                  className="mx-4 py-2 bg-sky-500 text-white rounded-xl dark:bg-white dark:text-black"
+                >
                   관리자 로그인
-                </Link>
-              </li>
+                </li>
+              </Link>
             </ul>
           </nav>
           <nav>
