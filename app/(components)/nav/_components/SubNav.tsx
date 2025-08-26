@@ -40,7 +40,7 @@ const SubNav = () => {
                 className="mx-4 py-2 bg-sky-500 text-white rounded-xl dark:bg-white dark:text-black"
               >
                 <Link href="/signin" aria-label="로그인으로 이동하기">
-                  로그인
+                  관리자 로그인
                 </Link>
               </li>
             </ul>
