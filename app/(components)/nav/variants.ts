@@ -2,14 +2,11 @@ import { cva, VariantProps } from "class-variance-authority";
 
 export const navLink = cva("transition-slow-color hover:text-sky-500", {
   variants: {
-    size: { sm: "text-sm", md: "text-base" },
-    tone: {
-      default: "text-inherit",
-      brand: "black hover:text-sky-500 dark:text-sky-400",
-    },
-    weight: { normal: "font-normal", medium: "font-medium" },
+    size: { md: "text-base" },
+    tone: { default: "text-inherit" },
+    weight: { normal: "font-normal" },
   },
-  defaultVariants: { size: "sm", tone: "default", weight: "normal" },
+  defaultVariants: { size: "md", tone: "default", weight: "normal" },
 });
 
 export type NavLinkVariants = VariantProps<typeof navLink>;
