@@ -4,6 +4,11 @@ module.exports = {
   content: ["./app/**/*.tsx"],
   theme: {
     extend: {
+      screens: {
+        mobile: "375px",
+        laptop: "1024px",
+        desktop: "1280px",
+      },
       keyframes: {
         fadeIn: {
           "0%": { opacity: "0" },
