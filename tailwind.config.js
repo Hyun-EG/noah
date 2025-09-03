@@ -9,19 +9,24 @@ module.exports = {
         laptop: "1024px",
         desktop: "1280px",
       },
+      colors: {
+        //주요 테마 색상
+        primary: "#721D21",
+        secondary: "#FADBC8",
+        tertiary: "#ED7474",
+
+        // 다크모드/라이트모드
+        dark: "#000000",
+        light: "#ffffff",
+      },
       keyframes: {
-        fadeIn: {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
+        "nav-item-hover-effect": {
+          "0%": { color: "#ffffff" },
+          "100%": { color: "#ED7474" },
         },
-        // moveFadeIn: {
-        //   "0%": { opacity: "0", transform: "translateY(-40px)" },
-        //   "100%": { opacity: "1", transform: "translateY(0)" },
-        // },
       },
       animation: {
-        // moveFadeIn: "moveFadeIn 0.5s ease-in-out",
-        fadeIn: "fadeIn 0.5s ease-in-out",
+        navItemHoverEffect: "nav-item-hover-effect 0.5s ease-in-out forwards",
       },
     },
   },
