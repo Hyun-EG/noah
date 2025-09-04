@@ -16,10 +16,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Noah",
+  title: "KALI DEV.",
   description: "Dev_park blog",
   manifest: "/manifest.json",
-  themeColor: "#2563eb",
+  themeColor: "primary",
   icons: {
     icon: "/icon-logo-192x192.png",
     apple: "/icon-logo-512x512.png",
