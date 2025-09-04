@@ -24,9 +24,14 @@ module.exports = {
           "0%": { color: "#ffffff" },
           "100%": { color: "#ED7474" },
         },
+        "opacity-effect": {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
       },
       animation: {
         navItemHoverEffect: "nav-item-hover-effect 0.5s ease-in-out forwards",
+        opacityEffect: "opacity-effect 0.5s ease-in-out forwards",
       },
     },
   },
