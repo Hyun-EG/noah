@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
-import { FaGithub, FaEnvelope, FaBars } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaGithub, FaEnvelope, FaBars, FaTimes } from "react-icons/fa";
 import { navItemList } from "./navItemList";
 import { usePathname } from "next/navigation";
+import MobileSubnav from "./MobileSubnav";
 
 const NavItems = () => {
+  const [subnav, setSubnav] = useState(false);
   const path = usePathname();
   return (
     <>
@@ -14,7 +16,7 @@ const NavItems = () => {
         {navItemList.map((item) => (
           <Link key={item.label} href={item.href}>
             <li
-              className={`hover:animate-navItemHoverEffect ${
+              className={`text-secondary hover:animate-navItemHoverEffect ${
                 path === item.href ? "text-tertiary underline" : ""
               }`}
             >
@@ -28,22 +30,39 @@ const NavItems = () => {
           target="_blank"
         >
           <li>
-            <FaGithub size={20} />
+            <FaGithub fill="#FADBC8" size={20} />
           </li>
         </Link>
         <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>
           <li>
-            <FaEnvelope size={20} />
+            <FaEnvelope fill="#FADBC8" size={20} />
           </li>
         </Link>
       </ul>
       <ul className="items-center gap-4 mobile:flex laptop:hidden desktop:hidden">
         <Link href="/">
-          <li>
-            <FaBars size={20} />
+          <li className="transition-all duration-500 ease-in-out transform hover:scale-110">
+            {subnav ? (
+              <FaTimes
+                fill="#FADBC8"
+                size={24}
+                onClick={() => {
+                  setSubnav(false);
+                }}
+              />
+            ) : (
+              <FaBars
+                fill="#FADBC8"
+                size={24}
+                onClick={() => {
+                  setSubnav(true);
+                }}
+              />
+            )}
           </li>
         </Link>
       </ul>
+      {subnav && <MobileSubnav />}
     </>
   );
 };
