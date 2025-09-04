@@ -2,7 +2,8 @@
 
 import { cva, VariantProps } from "class-variance-authority";
 import clsx from "clsx";
-import React, { useState } from "react";
+import { useTheme } from "next-themes";
+import React, { useEffect, useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
 
 interface ToggleThemeProps extends VariantProps<typeof toggleVariants> {
@@ -17,7 +18,6 @@ const toggleVariants = cva(
         responsive: "h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12",
       },
       defaultVariants: {
-        themeMode: "sun",
         size: "responsive",
       },
     },
@@ -25,18 +25,28 @@ const toggleVariants = cva(
 );
 
 const ToggleTheme = ({ className, size }: ToggleThemeProps) => {
-  const [theme, setTheme] = useState("sun");
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <button
       onClick={() => {
-        setTheme(theme === "sun" ? "moon" : "sun");
+        setTheme(theme === "dark" ? "light" : "dark");
       }}
       className={clsx(toggleVariants({ size }), className)}
     >
-      {theme === "sun" ? (
-        <FaSun fill="orange" size={24} />
-      ) : (
+      {resolvedTheme === "dark" ? (
         <FaMoon fill="yellow" size={24} />
+      ) : (
+        <FaSun fill="orange" size={24} />
       )}
     </button>
   );
