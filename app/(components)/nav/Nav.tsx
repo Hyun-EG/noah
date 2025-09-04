@@ -40,8 +40,10 @@ export const Nav = ({ variant, size, className }: NavProps) => {
             </span>
           </Link>
         </div>
-        <ToggleTheme />
-        <NavItems />
+        <div className="flex items-center gap-4">
+          <ToggleTheme />
+          <NavItems />
+        </div>
       </nav>
     </header>
   );
