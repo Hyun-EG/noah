@@ -16,7 +16,7 @@ module.exports = {
         tertiary: "#ED7474",
 
         // 다크모드/라이트모드
-        dark: "#000000",
+        dark: "#121212",
         light: "#ffffff",
       },
       keyframes: {
