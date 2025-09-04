@@ -37,7 +37,7 @@ export const Nav = ({ size, className }: NavProps) => {
         <div>
           <Link href="/" aria-label="홈으로 이동">
             <span className="text-xl font-bold hover:animate-navItemHoverEffect">
-              NOAH DEV.
+              KALI DEV.
             </span>
           </Link>
         </div>
