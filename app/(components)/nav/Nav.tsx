@@ -6,7 +6,7 @@ import Link from "next/link";
 import ToggleTheme from "../theme/ToggleTheme";
 
 const navVariants = cva(
-  "fixed top-0 left-0 z-50 w-full flex justify-between items-center text-secondary",
+  "fixed top-0 left-0 z-50 w-full flex justify-between items-center",
   {
     variants: {
       size: {
@@ -36,7 +36,7 @@ export const Nav = ({ size, className }: NavProps) => {
       >
         <div>
           <Link href="/" aria-label="홈으로 이동">
-            <span className="text-xl font-bold hover:animate-navItemHoverEffect">
+            <span className="text-xl font-bold text-secondary hover:animate-navItemHoverEffect">
               KALI DEV.
             </span>
           </Link>
