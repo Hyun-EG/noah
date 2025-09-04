@@ -30,7 +30,7 @@ export const Nav = ({ size, className }: NavProps) => {
       <nav
         className={clsx(
           navVariants({ size }),
-          "bg-primary/90 dark:bg-black/90",
+          "bg-primary/90 dark:bg-dark/90",
           className
         )}
       >
