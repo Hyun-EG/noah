@@ -10,7 +10,7 @@ const Container = ({ children, className }: ContainerProps) => {
   return (
     <div
       className={clsx(
-        "w-full mobile:px-0 laptop:px-12 desktop:px-40",
+        "w-full min-h-screen mobile:px-0 mobile:pt-12 laptop:px-12 laptop:pt-16 desktop:px-40 desktop:pt-16",
         className
       )}
     >
