@@ -33,34 +33,29 @@ const NavItems = () => {
             <FaGithub fill="#FADBC8" size={20} />
           </li>
         </Link>
-        <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>
+        <Link
+          href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}
+          aria-label="이메일 보내기"
+        >
           <li>
             <FaEnvelope fill="#FADBC8" size={20} />
           </li>
         </Link>
       </ul>
       <ul className="items-center gap-4 mobile:flex laptop:hidden desktop:hidden">
-        <Link href="/">
-          <li className="transition-all duration-500 ease-in-out transform hover:scale-110">
-            {subnav ? (
-              <FaTimes
-                fill="#FADBC8"
-                size={24}
-                onClick={() => {
-                  setSubnav(false);
-                }}
-              />
-            ) : (
-              <FaBars
-                fill="#FADBC8"
-                size={24}
-                onClick={() => {
-                  setSubnav(true);
-                }}
-              />
-            )}
-          </li>
-        </Link>
+        <button
+          onClick={() => setSubnav(!subnav)}
+          className="transition-all duration-500 ease-in-out transform hover:scale-110"
+          aria-expanded={subnav}
+          aria-controls="mobile-menu"
+          aria-label={subnav ? "메뉴 닫기" : "메뉴 열기"}
+        >
+          {subnav ? (
+            <FaTimes fill="#FADBC8" size={24} />
+          ) : (
+            <FaBars fill="#FADBC8" size={24} />
+          )}
+        </button>
       </ul>
       {subnav && <MobileSubnav />}
     </>
