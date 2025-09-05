@@ -24,7 +24,7 @@ const SignInForm = () => {
     <>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full px-10 flex flex-col justify-center items-center gap-4"
+        className="w-full laptop:w-[80%] desktop:w-[70%] px-10 flex flex-col justify-center items-center gap-4"
       >
         <input
           {...register("username")}
