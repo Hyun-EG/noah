@@ -4,13 +4,13 @@ import { cva } from "class-variance-authority";
 import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 
-type ToashPropsType = {
+type ToastPropsType = {
   children: React.ReactNode;
   duration?: number;
   onClose?: () => void;
 };
 
-const Toast = ({ children, duration = 4000, onClose }: ToashPropsType) => {
+const Toast = ({ children, duration = 4000, onClose }: ToastPropsType) => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
