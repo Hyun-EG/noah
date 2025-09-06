@@ -25,7 +25,7 @@ const Toast = ({ children, duration = 4000, onClose }: ToashPropsType) => {
   }, [duration, onClose]);
 
   const ToastVariants = cva(
-    "fixed right-0 w-80 h-12 px-2 py-1 flex justify-center items-center border rounded-lg animate-toastEffect",
+    "fixed right-0 z-60 w-80 h-12 px-2 py-1 flex justify-center items-center border rounded-lg animate-toastEffect",
     {
       variants: {
         size: {
@@ -34,8 +34,8 @@ const Toast = ({ children, duration = 4000, onClose }: ToashPropsType) => {
           desktop: "top-16",
         },
         state: {
-          error: "border-red-500",
-          success: "border-green-500",
+          error: "border-red-500 bg-red-500/10",
+          success: "border-green-500 bg-green-500/10",
         },
         visible: {
           true: "translate-x-0 opacity-100",
