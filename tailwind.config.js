@@ -18,6 +18,10 @@ module.exports = {
         // 다크모드/라이트모드
         dark: "#121212",
         light: "#ffffff",
+
+        // 성공/실패
+        success: "#4BD964",
+        failed: "#FF3B30",
       },
       keyframes: {
         // Nav
@@ -32,26 +36,20 @@ module.exports = {
           "100%": { opacity: 1 },
         },
 
-        // Toast
-        "toast-effect": {
-          "0%": {
-            transform: "translateX(100%)",
-            opacity: "0",
-          },
-          "50%": {
-            transform: "translateX(0%)",
-            opacity: "1",
-          },
-          "100%": {
-            transform: "translateX(100%)",
-            opacity: "0",
-          },
+        "toast-fade-in-effect": {
+          "0%": { opacity: 0, transform: "translate(100%)" },
+          "100%": { opacity: 1, transform: "translate(0px)" },
+        },
+        "toast-fade-out-effect": {
+          "0%": { opacity: 1, transform: "translate(0px)" },
+          "100%": { opacity: 0, transform: "translate(100%)" },
         },
       },
       animation: {
         navItemHoverEffect: "nav-item-hover-effect 0.5s ease-in-out forwards",
         opacityEffect: "opacity-effect 0.5s ease-in-out forwards",
-        toastEffect: "toast-effect 2s ease-in-out forwards",
+        toastFadeInEffect: "toast-fade-in-effect 0.5s ease-in-out forwards",
+        toastFadeOutEffect: "toast-fade-out-effect 0.5s ease-in-out forwards",
       },
     },
   },
