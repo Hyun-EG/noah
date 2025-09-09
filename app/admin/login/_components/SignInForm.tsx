@@ -1,6 +1,5 @@
 "use client";
 
-import Toast from "@/app/(components)/common/Toast";
 import { loginSchema } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
@@ -28,13 +27,13 @@ const SignInForm = () => {
       >
         <input
           {...register("username")}
-          className="w-full h-12 pl-2 border rounded-lg outline-none"
+          className="w-full h-12 pl-2 border outline-primary rounded-lg"
           type="text"
           placeholder="아이디를 입력해주세요."
         />
         <input
           {...register("password")}
-          className="w-full h-12 pl-2 border rounded-lg outline-none"
+          className="w-full h-12 pl-2 border outline-primary rounded-lg"
           type="password"
           placeholder="비밀번호를 입력해주세요."
         />
@@ -45,7 +44,6 @@ const SignInForm = () => {
           로그인
         </button>
       </form>
-      <Toast>Test</Toast>
     </>
   );
 };
