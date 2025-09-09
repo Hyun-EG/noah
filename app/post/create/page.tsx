@@ -1,13 +1,16 @@
 import React from "react";
-import Nav from "./_conponents/Nav";
+import Nav from "./_components/Nav";
+import CreateBox from "./_components/CreateBox";
 
 const CreatePage = () => {
   return (
-    <section>
+    <section className="px-2">
       <header>
         <Nav />
       </header>
-      <main></main>
+      <main>
+        <CreateBox />
+      </main>
     </section>
   );
 };
