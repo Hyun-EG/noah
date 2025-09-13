@@ -12,15 +12,15 @@ const SignInForm = () => {
   });
 
   const router = useRouter();
-  const formData = getValues();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onSubmit = async () => {
+    const formData = getValues();
     try {
       const res = await fetch("/api/signin", {
         method: "POST",
         headers: {
-          "": "",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           userId: formData.userId,
@@ -29,6 +29,8 @@ const SignInForm = () => {
       });
 
       const result = await res.json();
+      console.log(formData.userId);
+      console.log(formData.password);
 
       if (!res.ok) {
         alert(result.message);
