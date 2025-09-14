@@ -51,7 +51,7 @@ const Editor = ({
     "strike",
     "blockquote",
     "list",
-    "bullet",
+    // "bullet",
     "indent",
     "link",
     "image",
