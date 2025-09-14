@@ -11,19 +11,15 @@ export function middleware(request: NextRequest) {
     if (request.method === "GET") {
       return NextResponse.next();
     }
-
     const accessToken = request.cookies.get("accessToken")?.value;
-
     if (!accessToken) {
       return NextResponse.json(
         { error: "로그인이 필요합니다." },
         { status: 401 }
       );
     }
-
     // 토큰 유효성 검증
     const payload = verifyAccessToken(accessToken);
-
     if (!payload) {
       return NextResponse.json(
         {
@@ -33,7 +29,6 @@ export function middleware(request: NextRequest) {
         { status: 401 }
       );
     }
-
     // CSRF 토큰 검증
     const csrfToken = request.headers.get("x-csrf-token");
     const cookieToken = request.cookies.get("csrfToken")?.value;
