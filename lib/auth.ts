@@ -2,9 +2,6 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { connectDB } from "./connectDB";
 
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const { webcrypto } = require("crypto");
-
 // 비밀번호 해싱
 export async function hashPassword(password: string): Promise<string> {
   return await bcrypt.hash(password, 12);
@@ -42,10 +39,9 @@ export function generateRefreshToken(payload: {
 
 // CSRF토큰 생성 (Web Crypto API)
 export function generateCSRFToken(): string {
-  const array = new Uint8Array(32);
-  webcrypto.getRandomValues(array);
-  return Array.from(array, (byte) => byte.toString(16).padStart(2, "0")).join(
-    ""
+  return (
+    Math.random().toString(36).substring(2, 15) +
+    Math.random().toString(36).substring(2, 15)
   );
 }
 // 액세스 토큰 검증
