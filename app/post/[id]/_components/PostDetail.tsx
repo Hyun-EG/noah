@@ -4,7 +4,7 @@ import HeaderBox from "./header/HeaderBox";
 import ContentBox from "./main/ContentBox";
 import { PostDataType } from "./types";
 
-const PostDetail = ({ data }: { data: PostDataType }) => {
+const PostDetail = ({ data }: { data: PostDataType | null }) => {
   if (!data) {
     return (
       <section className="flex flex-col gap-4 px-2 py-10">
