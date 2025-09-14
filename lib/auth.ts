@@ -1,7 +1,9 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { connectDB } from "./connectDB";
-import { webcrypto } from "crypto";
+
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const { webcrypto } = require("crypto");
 
 // 비밀번호 해싱
 export async function hashPassword(password: string): Promise<string> {
