@@ -6,10 +6,9 @@ import { IoShareOutline } from "react-icons/io5";
 type HeaderPropsType = {
   title: string;
   date: string;
-  imgUrl: string;
 };
 
-const HeaderBox = ({ title, date, imgUrl }: HeaderPropsType) => {
+const HeaderBox = ({ title, date }: HeaderPropsType) => {
   return (
     <section className="flex flex-col gap-2 w-full">
       <div className="inline-flex flex-col gap-2 pb-2 border-b border-dark dark:border-light">
