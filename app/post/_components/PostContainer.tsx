@@ -6,9 +6,9 @@ import Link from "next/link";
 const PostContainer = ({ data }: PostDataProps) => {
   return (
     <main className="flex flex-wrap gap-4 justify-center laptop:justify-start desktop:justify-start">
-      {data.map((item) => (
+      {data.map((item, index) => (
         <div
-          key={item.title}
+          key={`${item._id}-${index}`}
           className="mobile:w-full laptop:w-96 desktop:w-96 h-72 border border-secondary rounded-xl cursor-pointer"
         >
           <Link href={`/post/${item._id}`}>
