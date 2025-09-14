@@ -19,14 +19,14 @@ export const refreshTokens = async (): Promise<boolean> => {
   }
 };
 
-export const getCSRFToken = (): string => {
-  const csrfToken = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("csrfToken="))
-    ?.split("=")[1];
+// export const getCSRFToken = (): string => {
+//   const csrfToken = document.cookie
+//     .split("; ")
+//     .find((row) => row.startsWith("csrfToken="))
+//     ?.split("=")[1];
 
-  return csrfToken || "";
-};
+//   return csrfToken || "";
+// };
 
 export const apiRequest = async (url: string, options: RequestInit = {}) => {
   let response = await fetch(url, {
