@@ -57,7 +57,7 @@ const NavItems = () => {
           )}
         </button>
       </ul>
-      {subnav && <MobileSubnav />}
+      {subnav && <MobileSubnav setSubnav={setSubnav} />}
     </>
   );
 };
