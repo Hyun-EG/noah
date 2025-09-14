@@ -11,7 +11,7 @@ const PostContainer = ({ data }: PostDataProps) => {
           key={item.title}
           className="mobile:w-full laptop:w-96 desktop:w-96 h-72 border border-secondary rounded-xl cursor-pointer"
         >
-          <Link href={`/post/${item.title}`}>
+          <Link href={`/post/${item._id}`}>
             <div className="h-44 bg-black rounded-xl overflow-hidden">
               <Image
                 className="w-full h-full object-cover rounded-xl hover:duration-500 hover:scale-110"
