@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { connectDB } from "./connectDB";
+import { webcrypto } from "crypto";
 
 // 비밀번호 해싱
 export async function hashPassword(password: string): Promise<string> {
@@ -37,10 +38,10 @@ export function generateRefreshToken(payload: {
   });
 }
 
-// CSRF토큰 생성
+// CSRF토큰 생성 (Web Crypto API)
 export function generateCSRFToken(): string {
   const array = new Uint8Array(32);
-  crypto.getRandomValues(array);
+  webcrypto.getRandomValues(array);
   return Array.from(array, (byte) => byte.toString(16).padStart(2, "0")).join(
     ""
   );

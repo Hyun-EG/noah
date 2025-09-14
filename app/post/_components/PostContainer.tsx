@@ -4,7 +4,7 @@ import testImg from "@/public/icons/icon-logo-512x512.png";
 const PostContainer = () => {
   return (
     <main className="flex flex-wrap gap-4 justify-center laptop:justify-start desktop:justify-start">
-      <div className="w-96 mobile:w-full h-72 border border-secondary rounded-xl cursor-pointer">
+      <div className="mobile:w-full laptop:w-96 desktop:w-96 h-72 border border-secondary rounded-xl cursor-pointer">
         <div className="h-44 bg-black rounded-xl overflow-hidden">
           <Image
             className="w-full h-full object-cover rounded-xl hover:duration-500 hover:scale-110"
