@@ -1,7 +1,5 @@
-import { ObjectId } from "mongodb";
-
 export interface PostDataType {
-  _id: ObjectId;
+  _id: string;
   title: string;
   description: string;
   category: string;
