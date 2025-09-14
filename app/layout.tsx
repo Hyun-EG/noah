@@ -4,6 +4,7 @@ import "./globals.css";
 import { Nav } from "./(components)/nav/Nav";
 import Container from "./(components)/screen/Container";
 import Providers from "./(components)/theme/Providers";
+import TokenRefreshProvider from "./(components)/common/TokenRefreshProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,6 +43,7 @@ export default function RootLayout({
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Providers>
+          <TokenRefreshProvider />
           <Container>
             <Nav />
             {children}
