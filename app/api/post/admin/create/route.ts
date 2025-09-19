@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-  const { title, description, category, content } = await req.json();
+  const { title, description, category, thumbnail, content } = await req.json();
 
   const cookie = await cookies();
   const token = cookie.get("accessToken");
@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  if (!title || !description || !category || !content) {
+  if (!title || !description || !category || !thumbnail || !content) {
     return NextResponse.json(
       { message: "모든 필드값을 채워주세요." },
       { status: 400 }
@@ -52,6 +52,7 @@ export async function POST(req: NextRequest) {
       title,
       description,
       category,
+      thumbnail,
       content,
       authorId: userId,
       createdAt: new Date().toISOString().split("T")[0],
