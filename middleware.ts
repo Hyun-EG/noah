@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { verifyAccessToken } from "./lib/auth";
 
 export function middleware(request: NextRequest) {
-  /* const pathname = request.nextUrl.pathname;
+  const pathname = request.nextUrl.pathname;
   // CSRF 보호가 필요한 경로들
   const protectedPaths = ["/api/post/admin/create", "/api/post/admin/edit"];
   // 현재 경로가 보호된 경로인지 확인
@@ -42,5 +42,5 @@ export function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 export const config = {
-  matcher: ["/api/post/admin/:path*"], */
-}
+  matcher: ["/api/post/admin/:path*"],
+};
