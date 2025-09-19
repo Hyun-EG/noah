@@ -35,15 +35,6 @@ module.exports = {
           "0%": { opacity: 0 },
           "100%": { opacity: 1 },
         },
-
-        "toast-fade-in-effect": {
-          "0%": { opacity: 0, transform: "translate(100%)" },
-          "100%": { opacity: 1, transform: "translate(0px)" },
-        },
-        "toast-fade-out-effect": {
-          "0%": { opacity: 1, transform: "translate(0px)" },
-          "100%": { opacity: 0, transform: "translate(100%)" },
-        },
       },
       animation: {
         navItemHoverEffect: "nav-item-hover-effect 0.5s ease-in-out forwards",
