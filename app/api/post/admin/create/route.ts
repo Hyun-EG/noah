@@ -8,35 +8,8 @@ export async function POST(req: NextRequest) {
 
   const cookie = await cookies();
   const token = cookie.get("accessToken");
-
-  if (!token?.value) {
-    return NextResponse.json(
-      {
-        message: "인증 토큰이 없습니다.",
-      },
-      { status: 401 }
-    );
-  }
-
-  let userId: string;
-
-  try {
-    const decodedToken = verifyAccessToken(token.value);
-
-    userId = decodedToken?.userId as string;
-    if (!userId) {
-      return NextResponse.json(
-        { message: "유효하지 않은 토큰입니다." },
-        { status: 401 }
-      );
-    }
-  } catch (error) {
-    console.error("토큰 검증 에러:", error);
-    return NextResponse.json(
-      { message: "토큰 검증에 실패하였습니다." },
-      { status: 401 }
-    );
-  }
+  const decodedToken = verifyAccessToken(token!.value);
+  const userId = decodedToken?.userId;
 
   if (!title || !description || !category || !thumbnail || !content) {
     return NextResponse.json(
