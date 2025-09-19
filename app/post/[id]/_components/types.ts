@@ -3,6 +3,7 @@ export interface PostDataType {
   title: string;
   description: string;
   category: string;
+  thumbnail: string;
   content: string;
   authorId: string;
   createdAt: string;
