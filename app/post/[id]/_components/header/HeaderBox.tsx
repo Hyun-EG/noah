@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { IoShareOutline } from "react-icons/io5";
 
 type HeaderPropsType = {
@@ -9,6 +9,8 @@ type HeaderPropsType = {
 };
 
 const HeaderBox = ({ title, date }: HeaderPropsType) => {
+  const router = useRouter();
+
   return (
     <section className="flex flex-col gap-2 w-full">
       <div className="inline-flex flex-col gap-2 pb-2 border-b border-dark dark:border-light">
@@ -26,6 +28,14 @@ const HeaderBox = ({ title, date }: HeaderPropsType) => {
             </div>
           </div>
           <div className="flex gap-2">
+            <button
+              onClick={() => {
+                router.push("/post");
+              }}
+              className="px-2 py-1 bg-primary dark:bg-dark rounded-lg text-white"
+            >
+              목록
+            </button>
             <button className="px-2 py-1 bg-primary dark:bg-dark rounded-lg text-white">
               편집
             </button>
@@ -35,15 +45,6 @@ const HeaderBox = ({ title, date }: HeaderPropsType) => {
           </div>
         </div>
       </div>
-      {/* <Image
-        className="w-full laptop:w-[60%] desktop:w-[60%] h-52 laptop:min-h-96 desktop:min-h-96 mt-4 bg-blue-500 rounded-lg"
-        width={100}
-        height={100}
-        src={imgUrl}
-        alt={`${title}의 대표이미지`}
-        quality={100}
-        priority
-      /> */}
     </section>
   );
 };
