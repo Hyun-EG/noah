@@ -1,5 +1,4 @@
 import Image from "next/image";
-import testImg from "@/public/icons/icon-logo-512x512.png";
 import { PostDataProps } from "../[id]/_components/types";
 import Link from "next/link";
 
@@ -9,15 +8,23 @@ const PostContainer = ({ data }: PostDataProps) => {
       {data.map((item, index) => (
         <div
           key={`${item._id}-${index}`}
-          className="mobile:w-full laptop:w-96 desktop:w-96 h-72 border border-secondary rounded-xl cursor-pointer"
+          className="mobile:w-full laptop:w-96 desktop:w-96 h-72 rounded-xl cursor-pointer bg-[#F9F9F9] dark:bg-dark"
         >
-          <Link href={`/post/${item._id}`}>
-            <div className="h-44 bg-black rounded-xl overflow-hidden">
+          <Link
+            className="duration-500 hover:text-tertiary"
+            href={`/post/${item._id}`}
+          >
+            <div className="relative w-full h-44 bg-gray-100 rounded-xl overflow-hidden">
               <Image
-                className="w-full h-full object-cover rounded-xl hover:duration-500 hover:scale-110"
-                src={testImg}
-                alt="테스트 이미지"
+                src={item.thumbnail || "/icons/icon-logo-512x512.png"}
+                alt={item.title}
+                fill
+                className="object-fill"
+                priority={true}
               />
+              <div className="absolute top-0 right-0 flex items-center justify-center w-16 h-5 px-4 py-3 bg-sky-500 rounded-xl text-white">
+                <p className="text-sm">{item.category}</p>
+              </div>
             </div>
             <article className="p-2">
               <p className="pb-2 text-2xl overflow-hidden text-ellipsis whitespace-nowrap">
