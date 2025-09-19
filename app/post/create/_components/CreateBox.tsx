@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import Editor from "./Editor";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { getCookie } from "@/util/cookie";
+import { apiRequest } from "@/lib/tokenUtils";
 
 const CreateBox = () => {
   const { register, handleSubmit, getValues } = useForm();
@@ -62,13 +62,10 @@ const CreateBox = () => {
     try {
       const thumbnailUrl = await uploadImageToVercel(thumbnailFile);
 
-      const csrfToken = getCookie("csrfToken");
-
-      const res = await fetch("/api/post/admin/create", {
+      const res = await apiRequest("/api/post/admin/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-csrf-token": csrfToken || "",
         },
         body: JSON.stringify({
           title: formData.title,
