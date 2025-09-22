@@ -1,29 +1,40 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { FaGithub, FaEnvelope, FaBars, FaTimes } from "react-icons/fa";
 import { navItemList } from "./navItemList";
 import { usePathname } from "next/navigation";
 import MobileSubnav from "./MobileSubnav";
 
-const NavItems = () => {
+const NavItems = React.memo(() => {
   const [subnav, setSubnav] = useState(false);
   const path = usePathname();
+
+  const navItems = useMemo(
+    () =>
+      navItemList.map((item) => (
+        <Link key={item.label} href={item.href}>
+          <li
+            className={`text-secondary hover:animate-navItemHoverEffect ${
+              path === item.href ? "text-tertiary underline" : ""
+            }`}
+          >
+            {item.label}
+          </li>
+        </Link>
+      )),
+    [path]
+  );
+
+  const toggleSubnav = useCallback(() => {
+    setSubnav((prev) => !prev);
+  }, []);
+
   return (
     <>
       <ul className="items-center gap-4 mobile:hidden laptop:flex desktop:flex">
-        {navItemList.map((item) => (
-          <Link key={item.label} href={item.href}>
-            <li
-              className={`text-secondary hover:animate-navItemHoverEffect ${
-                path === item.href ? "text-tertiary underline" : ""
-              }`}
-            >
-              {item.label}
-            </li>
-          </Link>
-        ))}
+        {navItems}
         <Link
           href={process.env.NEXT_PUBLIC_GITHUB as string}
           aria-label="깃허브 바로가기"
@@ -44,7 +55,7 @@ const NavItems = () => {
       </ul>
       <ul className="items-center gap-4 mobile:flex laptop:hidden desktop:hidden">
         <button
-          onClick={() => setSubnav(!subnav)}
+          onClick={toggleSubnav}
           className="transition-all duration-500 ease-in-out transform hover:scale-110"
           aria-expanded={subnav}
           aria-controls="mobile-menu"
@@ -60,6 +71,8 @@ const NavItems = () => {
       {subnav && <MobileSubnav setSubnav={setSubnav} />}
     </>
   );
-};
+});
+
+NavItems.displayName = "NavItems";
 
 export default NavItems;
