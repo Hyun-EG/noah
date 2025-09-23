@@ -1,5 +1,6 @@
 "use client";
 
+import { useAuthStore } from "@/lib/store/authStore";
 import { loginSchema } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
@@ -12,6 +13,7 @@ const SignInForm = () => {
   });
 
   const router = useRouter();
+  const { login } = useAuthStore();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onSubmit = async () => {
@@ -29,13 +31,17 @@ const SignInForm = () => {
       });
 
       const result = await res.json();
-      console.log(formData.userId);
-      console.log(formData.password);
 
       if (!res.ok) {
         alert(result.message);
         return;
       }
+
+      login({
+        userId: result.user.userId,
+        userEmail: result.user.userEmail,
+        userName: result.user.userName,
+      });
 
       alert(result.message);
       router.push("/");
