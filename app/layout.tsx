@@ -5,6 +5,7 @@ import { Nav } from "./(components)/nav/Nav";
 import Container from "./(components)/screen/Container";
 import Providers from "./(components)/theme/Providers";
 import TokenRefreshProvider from "./(components)/common/TokenRefreshProvider";
+import { AuthInitializer } from "./(components)/common/AuthIntializer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,6 +45,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Providers>
           <TokenRefreshProvider />
+          <AuthInitializer />
           <Container>
             <Nav />
             {children}
