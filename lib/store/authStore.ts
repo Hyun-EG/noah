@@ -10,6 +10,7 @@ interface User {
 interface AuthState {
   isLoggedIn: boolean;
   user: User | null;
+  isInitialized: boolean;
   login: (userData: User) => void;
   logout: () => void;
   checkAuthStatus: () => Promise<boolean>;
@@ -17,22 +18,26 @@ interface AuthState {
 
 export const useAuthStore = create<AuthState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       isLoggedIn: false,
       user: null,
+      isInitialized: false,
 
       login: (userData) =>
         set({
           isLoggedIn: true,
           user: userData,
+          isInitialized: true,
         }),
 
       logout: () => {
         fetch("/api/logout", { method: "POST" });
-        set({ isLoggedIn: false, user: null });
+        set({ isLoggedIn: false, user: null, isInitialized: true });
       },
 
       checkAuthStatus: async () => {
+        if (get().isInitialized) return get().isLoggedIn;
+
         try {
           const response = await fetch("/api/refresh", {
             method: "POST",
@@ -42,15 +47,23 @@ export const useAuthStore = create<AuthState>()(
           if (response.ok) {
             const data = await response.json();
             if (data.user) {
-              set({ isLoggedIn: true, user: data.user });
+              set({
+                isLoggedIn: true,
+                user: {
+                  userId: data.user.userId,
+                  userEmail: data.user.userEmail || data.user.email,
+                  userName: data.user.userName || "관리자",
+                },
+                isInitialized: true,
+              });
               return true;
             }
           }
 
-          set({ isLoggedIn: false, user: null });
+          set({ isLoggedIn: false, user: null, isInitialized: true });
           return false;
         } catch {
-          set({ isLoggedIn: false, user: null });
+          set({ isLoggedIn: false, user: null, isInitialized: true });
           return false;
         }
       },
@@ -60,6 +73,7 @@ export const useAuthStore = create<AuthState>()(
       partialize: (state) => ({
         isLoggedIn: state.isLoggedIn,
         user: state.user,
+        isInitialized: state.isInitialized,
       }),
     }
   )
