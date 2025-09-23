@@ -1,14 +1,18 @@
 "use client";
 
 import { useAuthStore } from "@/lib/store/authStore";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export const AuthInitializer = () => {
-  const { checkAuthStatus } = useAuthStore();
+  const { checkAuthStatus, isInitialized } = useAuthStore();
+  const hasInitialized = useRef(false);
 
   useEffect(() => {
-    checkAuthStatus();
-  }, [checkAuthStatus]);
+    if (!hasInitialized.current && !isInitialized) {
+      hasInitialized.current = true;
+      checkAuthStatus();
+    }
+  }, [checkAuthStatus, isInitialized]);
 
   return null;
 };
