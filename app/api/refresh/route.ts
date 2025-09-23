@@ -52,7 +52,8 @@ export async function POST(req: NextRequest) {
         message: "토큰이 갱신되었습니다.",
         user: {
           userId: user.userId,
-          email: user.email,
+          userEmail: user.email,
+          userName: "관리자",
         },
       },
       { status: 200 }
