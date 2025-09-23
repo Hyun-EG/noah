@@ -6,25 +6,65 @@ import { FaGithub, FaEnvelope, FaBars, FaTimes } from "react-icons/fa";
 import { navItemList } from "./navItemList";
 import { usePathname } from "next/navigation";
 import MobileSubnav from "./MobileSubnav";
+import { useAuthStore } from "@/lib/store/authStore";
+
+interface NavItem {
+  label: string;
+  href: string;
+  onClick?: () => void;
+}
 
 const NavItems = React.memo(() => {
   const [subnav, setSubnav] = useState(false);
   const path = usePathname();
+  const { isLoggedIn, logout } = useAuthStore();
 
-  const navItems = useMemo(
+  const navItems = useMemo((): NavItem[] => {
+    const baseItems = navItemList.filter(
+      (item) => item.label !== "관리자 로그인"
+    );
+
+    if (isLoggedIn) {
+      return [
+        ...baseItems,
+        {
+          label: "로그아웃",
+          href: "#",
+          onClick: logout,
+        },
+      ];
+    } else {
+      return [
+        ...baseItems,
+        {
+          label: "관리자 로그인",
+          href: "/admin/login",
+        },
+      ];
+    }
+  }, [isLoggedIn, logout]);
+
+  const renderNavItems = useMemo(
     () =>
-      navItemList.map((item) => (
+      navItems.map((item) => (
         <Link key={item.label} href={item.href}>
           <li
             className={`text-secondary hover:animate-navItemHoverEffect ${
               path === item.href ? "text-tertiary underline" : ""
             }`}
+            onClick={item.onClick}
           >
-            {item.label}
+            {isLoggedIn && item.label === "로그아웃" ? (
+              <span className="flex items-center gap-2">
+                <span>{item.label}</span>
+              </span>
+            ) : (
+              item.label
+            )}
           </li>
         </Link>
       )),
-    [path]
+    [navItems, path, isLoggedIn]
   );
 
   const toggleSubnav = useCallback(() => {
@@ -34,7 +74,7 @@ const NavItems = React.memo(() => {
   return (
     <>
       <ul className="items-center gap-4 mobile:hidden laptop:flex desktop:flex">
-        {navItems}
+        {renderNavItems}
         <Link
           href={process.env.NEXT_PUBLIC_GITHUB as string}
           aria-label="깃허브 바로가기"
